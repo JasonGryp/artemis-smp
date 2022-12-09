@@ -57,7 +57,7 @@ const FullPageBoxContainer = styled(Box)(({ theme }) => ({
 const ContentColumn = styled(Paper)(({ theme }) => ({
   display: "flex",
   width: "70%",
-  backgroundColor: theme.palette.grey.A700,
+  backgroundColor: theme.palette.grey[700],
   borderRadius: "5px",
   padding: "10px 20px ",
   marginTop: "20px",
@@ -84,7 +84,7 @@ const PageBody = () => {
     <FullPageBoxContainer>
       {Object.values(creatorConfig.creators).map((creator) => {
         return (
-          <ContentColumn elevation={4}>
+          <ContentColumn elevation={4} key={creator.name}>
             <Grid container>
               <Grid item sm={1}>
                 <Avatar
@@ -131,9 +131,9 @@ const PageBody = () => {
                     justifyContent: "center",
                   }}
                 >
-                  {creator.links.map((link) => {
+                  {creator.links.map((link, index) => {
                     return (
-                      <Grid item>
+                      <Grid item key={index}>
                         <LinkCard href={link.url}>
                           {IconMap[link.name]}
                           <Typography

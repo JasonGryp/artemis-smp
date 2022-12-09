@@ -9,14 +9,7 @@ const LandingPage = () => {
       <Grid item sm={12}>
         <NavBar />
       </Grid>
-      <Grid
-        item
-        flex={1}
-        sm={12}
-        sx={(theme) => ({
-          backgroundColor: theme.palette.grey[800],
-        })}
-      >
+      <Grid item flex={1} sm={12}>
         <PageBody />
       </Grid>
     </Grid>
