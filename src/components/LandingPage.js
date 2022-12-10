@@ -6,7 +6,7 @@ import PageBody from "./PageBody";
 const LandingPage = () => {
   return (
     <Grid container display={"flex"} direction={"column"}>
-      <Grid item sm={12}>
+      <Grid item sm={12} sx={{ position: "sticky", top: 0, zIndex: 99 }}>
         <NavBar />
       </Grid>
       <Grid item flex={1} sm={12}>
