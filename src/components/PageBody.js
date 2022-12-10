@@ -82,77 +82,81 @@ const LinkCard = styled(Link)(({ theme }) => ({
 const PageBody = () => {
   return (
     <FullPageBoxContainer>
-      {Object.values(creatorConfig.creators).map((creator) => {
-        return (
-          <ContentColumn elevation={4} key={creator.name}>
-            <Grid container>
-              <Grid item sm={1}>
-                <Avatar
-                  alt={creator.name}
-                  src={creator.img}
-                  sx={{ width: 70, height: 70 }}
-                />
-              </Grid>
-              <Grid item flex={1} sm={8}>
-                <NameColumn href={creator.channel}>
+      {Object.values(creatorConfig.creators)
+        .sort((a, b) =>
+          a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+        )
+        .map((creator) => {
+          return (
+            <ContentColumn elevation={4} key={creator.name}>
+              <Grid container>
+                <Grid item sm={1}>
+                  <Avatar
+                    alt={creator.name}
+                    src={creator.img}
+                    sx={{ width: 70, height: 70 }}
+                  />
+                </Grid>
+                <Grid item flex={1} sm={8}>
+                  <NameColumn href={creator.channel}>
+                    <Typography
+                      variant="h6"
+                      component="span"
+                      sx={{ fontWeight: "bold", marginRight: "5px" }}
+                    >
+                      {creator.name}
+                    </Typography>
+                    <LaunchIcon />
+                  </NameColumn>
                   <Typography
-                    variant="h6"
+                    sx={{ color: "#aaaa", marginLeft: "5px" }}
+                    variant="body1"
                     component="span"
-                    sx={{ fontWeight: "bold", marginRight: "5px" }}
+                  >{`(${creator.pronouns})`}</Typography>
+                  <Typography
+                    sx={{
+                      color: "white",
+                      marginLeft: "5px",
+                      marginTop: "10px",
+                      fontSize: "14px",
+                    }}
+                    variant="body1"
                   >
-                    {creator.name}
+                    {creator.about}
                   </Typography>
-                  <LaunchIcon />
-                </NameColumn>
-                <Typography
-                  sx={{ color: "#aaaa", marginLeft: "5px" }}
-                  variant="body1"
-                  component="span"
-                >{`(${creator.pronouns})`}</Typography>
-                <Typography
-                  sx={{
-                    color: "white",
-                    marginLeft: "5px",
-                    marginTop: "10px",
-                    fontSize: "14px",
-                  }}
-                  variant="body1"
-                >
-                  {creator.about}
-                </Typography>
-              </Grid>
-              <Grid item sm={3} alignItems="flex-end">
-                <Grid
-                  container
-                  direction={"column"}
-                  sx={{
-                    height: "100%;",
-                    alignContent: "flex-end",
-                    justifyContent: "center",
-                  }}
-                >
-                  {creator.links.map((link, index) => {
-                    return (
-                      <Grid item key={index}>
-                        <LinkCard href={link.url}>
-                          {IconMap[link.name]}
-                          <Typography
-                            sx={{ marginLeft: "5px" }}
-                            variant="body1"
-                            component="span"
-                          >
-                            {link.name}
-                          </Typography>
-                        </LinkCard>
-                      </Grid>
-                    );
-                  })}
+                </Grid>
+                <Grid item sm={3} alignItems="flex-end">
+                  <Grid
+                    container
+                    direction={"column"}
+                    sx={{
+                      height: "100%;",
+                      alignContent: "flex-end",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {creator.links.map((link, index) => {
+                      return (
+                        <Grid item key={index}>
+                          <LinkCard href={link.url}>
+                            {IconMap[link.name]}
+                            <Typography
+                              sx={{ marginLeft: "5px" }}
+                              variant="body1"
+                              component="span"
+                            >
+                              {link.name}
+                            </Typography>
+                          </LinkCard>
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          </ContentColumn>
-        );
-      })}
+            </ContentColumn>
+          );
+        })}
     </FullPageBoxContainer>
   );
 };
