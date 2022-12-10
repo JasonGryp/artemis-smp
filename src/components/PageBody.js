@@ -98,7 +98,7 @@ const PageBody = () => {
                   />
                 </Grid>
                 <Grid item flex={1} sm={8}>
-                  <NameColumn href={creator.channel}>
+                  <NameColumn href={creator.channel} target="_blank">
                     <Typography
                       variant="h6"
                       component="span"
@@ -138,7 +138,7 @@ const PageBody = () => {
                     {creator.links.map((link, index) => {
                       return (
                         <Grid item key={index}>
-                          <LinkCard href={link.url}>
+                          <LinkCard href={link.url} target="_blank">
                             {IconMap[link.name]}
                             <Typography
                               sx={{ marginLeft: "5px" }}
