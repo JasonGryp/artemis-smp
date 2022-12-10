@@ -5,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import VHLogo from "../resources/VHimages/logo.png";
+import vaultPortalTexture from "../resources/VHimages/vault-portal.webp";
 
 export const NavBar = () => {
   return (
@@ -45,9 +46,11 @@ export const NavBar = () => {
   );
 };
 
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.secondary.main,
-  maxHeight: "100%",
+const StyledAppBar = styled(AppBar)(() => ({
+  background: `url(${vaultPortalTexture})`,
+  backgroundSize: "5em",
+  imageRendering: "crisp-edges",
+  borderImageSlice: 16,
 }));
 
 export default NavBar;
