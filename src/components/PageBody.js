@@ -45,7 +45,7 @@ const IconMap = {
   Twitter: <TwitterIcon />,
 };
 
-const FullPageBoxContainer = styled(Box)(({ theme }) => ({
+const FullPageBoxContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   height: "100%",
@@ -79,6 +79,25 @@ const LinkCard = styled(Link)(({ theme }) => ({
   margin: "5px 0px",
 }));
 
+const ResponsiveAvatar = styled(Avatar)(({ theme }) => ({
+  width: 70,
+  height: 70,
+}));
+const ResponsiveAvatarContainer = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  [theme.breakpoints.down("md")]: {
+    justifyContent: "center",
+  },
+}));
+const ResponsiveLinksContainer = styled(Grid)(({ theme }) => ({
+  alignItems: "flex-end",
+  [theme.breakpoints.down("md")]: {
+    borderTop: "1px solid white",
+    marginTop: "20px",
+    alignItems: "flex-start",
+  },
+}));
+
 const PageBody = () => {
   return (
     <FullPageBoxContainer>
@@ -90,14 +109,10 @@ const PageBody = () => {
           return (
             <ContentColumn elevation={4} key={creator.name}>
               <Grid container>
-                <Grid item sm={1}>
-                  <Avatar
-                    alt={creator.name}
-                    src={creator.img}
-                    sx={{ width: 70, height: 70 }}
-                  />
-                </Grid>
-                <Grid item flex={1} sm={8}>
+                <ResponsiveAvatarContainer item xs={12} md={2}>
+                  <ResponsiveAvatar alt={creator.name} src={creator.img} />
+                </ResponsiveAvatarContainer>
+                <Grid item flex={1} xs={12} md={8}>
                   <NameColumn href={creator.channel} target="_blank">
                     <Typography
                       variant="h6"
@@ -125,14 +140,12 @@ const PageBody = () => {
                     {creator.about}
                   </Typography>
                 </Grid>
-                <Grid item sm={3} alignItems="flex-end">
-                  <Grid
+                <Grid item xs={12} md={2} alignItems="flex-end">
+                  <ResponsiveLinksContainer
                     container
                     direction={"column"}
                     sx={{
                       height: "100%;",
-                      alignContent: "flex-end",
-                      justifyContent: "center",
                     }}
                   >
                     {creator.links.map((link, index) => {
@@ -151,7 +164,7 @@ const PageBody = () => {
                         </Grid>
                       );
                     })}
-                  </Grid>
+                  </ResponsiveLinksContainer>
                 </Grid>
               </Grid>
             </ContentColumn>
