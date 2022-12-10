@@ -87,6 +87,7 @@ const ResponsiveAvatarContainer = styled(Grid)(({ theme }) => ({
   display: "flex",
   [theme.breakpoints.down("md")]: {
     justifyContent: "center",
+    paddingBottom: "10px",
   },
 }));
 const ResponsiveLinksContainer = styled(Grid)(({ theme }) => ({
@@ -94,6 +95,7 @@ const ResponsiveLinksContainer = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     borderTop: "1px solid white",
     marginTop: "20px",
+    paddingTop: "10px",
     alignItems: "flex-start",
   },
 }));
