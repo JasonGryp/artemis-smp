@@ -22,23 +22,15 @@ export const NavBar = () => {
           >
             ArtemisSMP
           </Typography>
-          <Box
+          <VHLogoBoxContainer
             sx={{
               flexGrow: 1,
               display: "flex",
               justifyContent: "center",
             }}
           >
-            <Box
-              component="img"
-              alt=""
-              src={VHLogo}
-              sx={{
-                height: 60,
-                width: 287,
-              }}
-            />
-          </Box>
+            <VHLogoBox component="img" alt="" src={VHLogo} />
+          </VHLogoBoxContainer>
           <Box sx={{}} />
         </Toolbar>
       </StyledAppBar>
@@ -51,6 +43,29 @@ const StyledAppBar = styled(AppBar)(() => ({
   backgroundSize: "5em",
   imageRendering: "crisp-edges",
   borderImageSlice: 16,
+}));
+
+const VHLogoBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    height: 40,
+    width: 191,
+  },
+  [theme.breakpoints.up("md")]: {
+    height: 60,
+    width: 287,
+  },
+}));
+
+const VHLogoBoxContainer = styled(Box)(({ theme }) => ({
+  flexGrow: 1,
+  display: "flex",
+
+  [theme.breakpoints.down("sm")]: {
+    justifyContent: "flex-end",
+  },
+  [theme.breakpoints.up("md")]: {
+    justifyContent: "center",
+  },
 }));
 
 export default NavBar;
